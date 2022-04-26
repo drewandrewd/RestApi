@@ -15,6 +15,6 @@ public class File {
     @GeneratedValue
     private String id;
 
-    private File file;
-    private Map<Integer, Integer> contents;
+    private String name;
+    private Map<Double, String> contents;
 }
