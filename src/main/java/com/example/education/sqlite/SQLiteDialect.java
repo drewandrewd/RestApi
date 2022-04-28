@@ -63,7 +63,7 @@ public class SQLiteDialect extends Dialect {
         return true;
     }
 
-    protected String getLimitString(String query, boolean hasOffset) {
+    protected String getLimitString(@org.jetbrains.annotations.NotNull String query, boolean hasOffset) {
         return new StringBuffer(query.length() + 20).append(query).append(hasOffset ? " limit ? offset ?" : " limit ?")
                 .toString();
     }

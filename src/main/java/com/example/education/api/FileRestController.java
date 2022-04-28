@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
+
 @RestController
 @RequestMapping("api/file")
 @Data
@@ -22,10 +24,9 @@ public class FileRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public int create(@RequestBody FileRequest file) {
+    public int create(@RequestBody FileRequest file) throws FileNotFoundException {
         return fileService.create(file);
     }
-
 
     @Autowired
     public void setFileService(FileServiceImpl fileService) {

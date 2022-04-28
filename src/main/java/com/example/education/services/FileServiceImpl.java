@@ -7,6 +7,8 @@ import com.example.education.repositories.FileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
+
 @Service
 public class FileServiceImpl implements FileService {
 
@@ -14,14 +16,16 @@ public class FileServiceImpl implements FileService {
     private Converter converter;
 
     @Override
-    public int create(FileRequest file) {
+    public int create(FileRequest file) throws FileNotFoundException {
         File currFile = converter.requestToFile(file);
-        return fileRepository.create(currFile);
+        File fileInDb = fileRepository.save(currFile);
+        System.out.println(fileInDb.getId());
+        return fileInDb.getId();
     }
 
     @Override
     public File getById(int id) {
-        return fileRepository.getById(id);
+        return fileRepository.findById(id).get();
     }
 
     @Autowired

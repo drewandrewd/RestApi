@@ -7,7 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FileRepository extends CrudRepository<File, Integer> {
 
-    int create(File file);
-
-    File getById(int id);
 }
